@@ -1,14 +1,18 @@
 # troubleshooting
 
-## cpu 内存
+## cpu_load
 ```
-打印线程
 top -H
-打印进程
 top -H -p <pid>
+
+ps -mp <pid> -o THREAD,tid,time
+
+printf '%x\n' <pid>
+
+jstack <pid>|grep <tid>
 ```
 
-## Ps -mp pid -o THREAD,tid,time
+## gc
 ```
 
 ```
@@ -26,19 +30,4 @@ iostat -kdx 2 10
 
 rkB/s和wkB/s: 分别对应读写速度
 avgqu-sz: 读写队列的平均请求长度
-```
-
-## 转换16进制
-```
-printf '%x\n' <pid>
-```
-
-## 异常
-```
-
-```
-
-## 性能变差
-```
-
 ```
