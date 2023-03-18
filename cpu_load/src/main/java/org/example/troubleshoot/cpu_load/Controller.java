@@ -7,6 +7,6 @@ public class Controller implements Transport {
 
     @Override
     public String doTransport(FullHttpRequest request) {
-        return "hello world";
+        return "hello world.";
     }
 }
