@@ -8,6 +8,11 @@ top -H
 top -H -p <pid>
 ```
 
+## Ps -mp pid -o THREAD,tid,time
+```
+
+```
+
 ## 网络
 ```
 netstat  -n 打印数字端口号 -t tcp连接 -l 监听端口 -a 所有端口 -p 进程号 -s 打印统计信息|grep 进程号 or 端口号 查看进程的连接
