@@ -1,5 +1,9 @@
 package org.example.troubleshoot.cpu_load;
 
-public class Main {
+import org.example.troublesheeting.HttpServer;
 
+public class Main {
+    public static void main(String[] args) {
+        new HttpServer(new Controller()).start();
+    }
 }

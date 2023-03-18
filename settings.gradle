@@ -1,4 +1,4 @@
 rootProject.name = 'troubleshooting'
 include 'cpu_load'
-include 'hello_world'
+include 'common'
 

@@ -13,17 +13,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
-    implementation 'io.netty:netty-all:4.1.68.Final'
+    api 'io.netty:netty-all:4.1.68.Final'
 }
 
 test {
     useJUnitPlatform()
-}
-
-jar {
-    manifestContentCharset 'utf-8'
-    metadataCharset 'utf-8'
-    manifest {
-        attributes 'Main-Class': "org.example.troubleshoot.hello_world.Main"
-    }
 }

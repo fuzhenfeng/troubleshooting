@@ -13,28 +13,25 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.example.troubleshoot.hello_world;
+package org.example.troublesheeting;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.compression.CompressionOptions;
-import io.netty.handler.codec.http.HttpContentCompressor;
+import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
-import io.netty.handler.ssl.SslContext;
 
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
-
-    public ServerInitializer() {
+    Transport transport;
+    public ServerInitializer(Transport transport) {
+        this.transport = transport;
     }
 
     @Override
     public void initChannel(SocketChannel ch) {
         ChannelPipeline p = ch.pipeline();
         p.addLast(new HttpServerCodec());
-        p.addLast(new HttpContentCompressor((CompressionOptions[]) null));
-        p.addLast(new HttpServerExpectContinueHandler());
-        p.addLast(new ServerHandler());
+        p.addLast(new HttpObjectAggregator(4096));
+        p.addLast(new ServerHandler(transport));
     }
 }
