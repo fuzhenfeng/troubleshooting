@@ -38,7 +38,7 @@ public class Controller implements Transport {
 
     private void doCalculate() {
         ArrayList<String> words = new ArrayList<>();
-        if (FileOperation.readFile("/pride-and-prejudice.txt", words)) {
+        if (FileOperation.readFile("pride-and-prejudice.txt", words)) {
             System.out.println("Total words: " + words.size());
 
             BST<String, Integer> map = new BST<>();
