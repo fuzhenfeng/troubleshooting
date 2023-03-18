@@ -38,7 +38,7 @@ public class Controller implements Transport {
 
     private void doCalculate() {
         ArrayList<String> words = new ArrayList<>();
-        if (FileOperation.readFile("pride-and-prejudice.txt", words)) {
+        if (FileOperation.readFile("/pride-and-prejudice.txt", words)) {
             System.out.println("Total words: " + words.size());
 
             BST<String, Integer> map = new BST<>();
@@ -52,6 +52,8 @@ public class Controller implements Transport {
             System.out.println("Total different words: " + map.getSize());
             System.out.println("Frequency of PRIDE: " + map.get("pride"));
             System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
+        } else {
+            System.out.println("file not found");
         }
     }
 }
