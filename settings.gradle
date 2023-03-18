@@ -1,4 +1,10 @@
 rootProject.name = 'troubleshooting'
 include 'cpu_load'
 include 'common'
+include 'heap_error'
+include 'stack_error'
+include 'permgen_error'
+include 'constant_pool'
+include 'method_area'
+include 'native_error'
 
