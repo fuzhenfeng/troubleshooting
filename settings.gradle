@@ -7,4 +7,6 @@ include 'permgen_error'
 include 'constant_pool'
 include 'method_area'
 include 'native_error'
+include 'gc'
+include 'gc_cms'
 
