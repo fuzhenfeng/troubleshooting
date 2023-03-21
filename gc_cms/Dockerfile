@@ -1,18 +1,24 @@
 FROM openjdk:8-jdk-alpine
 LABEL maintainer=fuzhenfeng
 ENV TZ=Asia/Shanghai
+RUN apk update \
+    && apk add tzdata \
+    && echo "${TZ}" > /etc/timezone \
+    && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && rm /var/cache/apk/*
 ARG JMX_HOST=${JMX_HOST}
 ARG JMX_PORT=${JMX_PORT}
 ENV JAVA_OPTS="\
--Xms1024m \
--Xmx1024m \
+-Xms256m \
+-Xmx256m \
 -Xss256k \
--Xmn512m \
+-Xmn128m \
 -XX:SurvivorRatio=8 \
 -XX:NewRatio=4 \
 -XX:+UseParNewGC \
 -XX:+UseConcMarkSweepGC \
 -Xloggc:./gc-%t.log \
+-verbosegc \
 -XX:+PrintGCDetails \
 -XX:+PrintGCDateStamps \
 -XX:+PrintGCCause \
@@ -29,3 +35,5 @@ ENV JAVA_OPTS="\
 ADD ./build/libs/gc_cms-1.0-SNAPSHOT.jar /gc_cms-1.0-SNAPSHOT.jar
 ENTRYPOINT ["/bin/sh", "-c", "java ${JAVA_OPTS} -jar /gc_cms-1.0-SNAPSHOT.jar"]
 EXPOSE 8081 8082 8083
+
+
