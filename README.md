@@ -14,22 +14,18 @@ jstack <pid>|grep <tid>
 
 ## gc
 ```
--Xms1024m
--Xmx1024m
--Xss256k
--Xmn512m
--XX:SurvivorRatio=8
--XX:NewRatio=4
--XX:MetaspaceSize
--XX:MaxMetaspaceSize
--XX:+UseParNewGC
--XX:+UseConcMarkSweepGC
--Xloggc:./gc-%t.log
--XX:+PrintGCDetails
--XX:+PrintGCDateStamps
--XX:+PrintGCCause
--XX:+HeapDumpOnOutOfMemoryError
--XX:HeapDumpPath=./jvm.dump
+设置gc日志
+设置或创建（jmap -dump:format=b,file=/tmp/1.hprof pid）dump文件
+
+gc日志分析
+https://gceasy.io/gc-index.jsp
+
+dump分析
+visualvm -> instant size -> references
+mat -> domainator tree
+
+类加载分析
+jmap -histo pid
 ```
 
 ## 网络

@@ -9,21 +9,25 @@ RUN apk update \
 ARG JMX_HOST=${JMX_HOST}
 ARG JMX_PORT=${JMX_PORT}
 ENV JAVA_OPTS="\
--Xms256m \
--Xmx256m \
+-Xms64m \
+-Xmx64m \
 -Xss256k \
--Xmn128m \
+-Xmn32m \
 -XX:SurvivorRatio=8 \
 -XX:NewRatio=4 \
 -XX:+UseParNewGC \
 -XX:+UseConcMarkSweepGC \
--Xloggc:./gc-%t.log \
 -verbosegc \
+-Xloggc:./gc-%t.log \
+-verbose:class \
+-XX:+PrintReferenceGC \
+-XX:+TraceClassLoading \
+-XX:+TraceClassUnLoading \
 -XX:+PrintGCDetails \
 -XX:+PrintGCDateStamps \
 -XX:+PrintGCCause \
 -XX:+HeapDumpOnOutOfMemoryError \
--XX:HeapDumpPath=./jvm.dump \
+-XX:HeapDumpPath=./tmp \
 -Djava.rmi.server.hostname=$JMX_HOST \
 -Dcom.sun.management.jmxremote \
 -Dcom.sun.management.jmxremote.rmi.port=$JMX_PORT \
@@ -33,7 +37,8 @@ ENV JAVA_OPTS="\
 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8082 \
 "
 ADD ./build/libs/gc_cms-1.0-SNAPSHOT.jar /gc_cms-1.0-SNAPSHOT.jar
-ENTRYPOINT ["/bin/sh", "-c", "java ${JAVA_OPTS} -jar /gc_cms-1.0-SNAPSHOT.jar"]
+RUN echo "java ${JAVA_OPTS} -jar /gc_cms-1.0-SNAPSHOT.jar" > /start.sh && chmod 777 /start.sh
+ENTRYPOINT ["/bin/sh", "/start.sh"]
 EXPOSE 8081 8082 8083
 
 

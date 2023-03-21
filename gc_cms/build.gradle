@@ -22,6 +22,14 @@ dependencies {
     compile 'org.apache.logging.log4j:log4j-core:2.19.0'
     compile 'org.apache.logging.log4j:log4j-api:2.19.0'
 
+    // _Log4j bug
+//    compile 'org.apache.logging.log4j:log4j-core:2.5.0'
+//    compile 'org.apache.logging.log4j:log4j-api:2.5.0'
+
+    // _fastjson bug
+    compile 'com.alibaba:fastjson:1.2.69'
+
+
     compile 'com.thoughtworks.xstream:xstream:1.4.20'
 
     compile 'com.github.fuzhenfeng:http:0.1.0'
