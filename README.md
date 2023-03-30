@@ -2,14 +2,19 @@
 
 ## cpu_load
 ```
+top
+
 top -H
 top -H -p <pid>
-
+或
 ps -mp <pid> -o THREAD,tid,time
+打印线程
 
-printf '%x\n' <pid>
+printf '%x\n' <tid>
+打印16进制线程
 
 jstack <pid>|grep <tid>
+根据进程和线程查询
 ```
 
 ## gc

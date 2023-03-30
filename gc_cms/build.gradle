@@ -29,10 +29,11 @@ dependencies {
     // _fastjson bug
     compile 'com.alibaba:fastjson:1.2.69'
 
-
     compile 'com.thoughtworks.xstream:xstream:1.4.20'
 
     compile 'com.github.fuzhenfeng:http:0.1.0'
+
+    implementation 'com.sun.xml.bind:jaxb-impl:4.0.2'
 }
 
 test {

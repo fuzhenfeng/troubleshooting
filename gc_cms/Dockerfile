@@ -22,7 +22,6 @@ ENV JAVA_OPTS="\
 -verbose:class \
 -XX:+PrintReferenceGC \
 -XX:+TraceClassLoading \
--XX:+TraceClassUnLoading \
 -XX:+PrintGCDetails \
 -XX:+PrintGCDateStamps \
 -XX:+PrintGCCause \
